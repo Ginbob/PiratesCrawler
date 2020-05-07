@@ -12,7 +12,7 @@ async function getBesteWerfer(htmlText, csvRow) {
     const dom = new JSDOM(htmlText);
     const table = dom.window.document.querySelector(".sportView");
     const tableRows = table.querySelectorAll('tr');
-    const baseQuery = "insert into beste_werfer (saison, team, liga, rang, nachname, vorname, mannschaft, punkte, spiele, durchschnitt) values ";
+    const baseQuery = "replace into beste_werfer (saison, team, liga, rang, nachname, vorname, mannschaft, punkte, spiele, durchschnitt) values ";
     const values = [];
     try {
         for (var i = 0; i < tableRows.length; i++) {
@@ -58,7 +58,7 @@ async function getBesteFreiwerfer(htmlText, csvRow) {
     const dom = new JSDOM(htmlText);
     const table = dom.window.document.querySelector(".sportView");
     const tableRows = table.querySelectorAll('tr');
-    const baseQuery = "insert into beste_freiwerfer (saison, team, liga, rang, nachname, vorname, mannschaft, versuche, treffer, quote) values ";
+    const baseQuery = "replace into beste_freiwerfer (saison, team, liga, rang, nachname, vorname, mannschaft, versuche, treffer, quote) values ";
     const values = [];
     try {
         for (var i = 0; i < tableRows.length; i++) {
@@ -104,7 +104,7 @@ async function getBesteDreierwerfer(htmlText, csvRow) {
     const dom = new JSDOM(htmlText);
     const table = dom.window.document.querySelector(".sportView");
     const tableRows = table.querySelectorAll('tr');
-    const baseQuery = "insert into beste_dreierwerfer (saison, team, liga, rang, nachname, vorname, mannschaft, dreier, spiele, durchschnitt) values ";
+    const baseQuery = "replace into beste_dreierwerfer (saison, team, liga, rang, nachname, vorname, mannschaft, dreier, spiele, durchschnitt) values ";
     const values = [];
     try {
         for (var i = 0; i < tableRows.length; i++) {
@@ -150,7 +150,7 @@ async function getTabelle(htmlText, csvRow) {
     const dom = new JSDOM(htmlText);
     const table = dom.window.document.querySelectorAll(".sportView")[1];
     const tableRows = table.querySelectorAll('tr');
-    const baseQuery = "insert into tabelle (saison, team, liga, rang, mannschaft, spiele, punkte, koerbe, differenz) values ";
+    const baseQuery = "replace into tabelle (saison, team, liga, rang, mannschaft, spiele, punkte, koerbe, differenz) values ";
     const values = [];
     try {
         for (var i = 0; i < tableRows.length; i++) {
@@ -191,7 +191,7 @@ async function getErgebnisse(htmlText, csvRow) {
     const dom = new JSDOM(htmlText);
     const table = dom.window.document.querySelectorAll(".sportView")[1];
     const tableRows = table.querySelectorAll('tr');
-    const baseQuery = "insert into ergebnisse (saison, team, liga, spieltag, nummer, datum, heim, gast, endstand) values ";
+    const baseQuery = "replace into ergebnisse (saison, team, liga, spieltag, nummer, datum, heim, gast, endstand) values ";
     const values = [];
     try {
         for (var i = 0; i < tableRows.length; i++) {
@@ -291,8 +291,8 @@ async function saveCategoriesForEverySeason() {
             saisonId: csvRow["Saison-ID"],
             team: csvRow.Team,
             liga: csvRow.Liga,
-            updatedTables: successes.length,
-            updateFailures: failures.length
+            updatedTables: successes,
+            updateFailures: failures
         });
     };
     return resultAll;

@@ -20,7 +20,7 @@
   "dependencies": {
     "fast-csv": "^3.4.0",
     "fs": "0.0.1-security",
-    "jsdom": "^15.2.1",
+    "jsdom": "^16.5.0",
     "mysql": "^2.17.1",
     "node-fetch": "^2.6.0",
     "papaparse": "^5.1.0"
